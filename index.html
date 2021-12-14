@@ -1,48 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReactZero</title>
-</head>
-<body>
-    <div id="app">
-    </div>
-    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReceitaReact - 3</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="libs/react.js"></script>
+    <script src="libs/react-dom.js"></script>
+    <script src="libs/babel.js"></script>
 
     <script type="text/babel">
-        
-        const MyTable = () => {
-            return (
-                <div id="app">
-                    <Cabecalho/>,
-                    <table id="tabela" border="1">
-                        <thead>
-                            <tr><th>Nome</th><th>Marca</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Havana</td><td>Engenho Anísio Santiago</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-            )
-        }
+      const TabelaBebidas = ({
+        titulo,
+        cabecalhos: [cabecalho1, cabecalho2],
+        conteudo: [conteudo1, conteudo2, conteudo3, conteudo4],
+      }) => {
+        return (
+          <div>
+            <h1>{titulo}</h1>
 
-        const Cabecalho = () => {
-            return (
-                <h1>Minha tabela de bebidas</h1>
-            )
-        }
- 
-        ReactDOM.render(
-            <MyTable/>,
-            document.getElementById("app")
-        ); 
-                
+            <table id="tabela" border="1">
+              <thead>
+                <tr>
+                  <th>{cabecalho1}</th>
+                  <th>{cabecalho2}</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>{conteudo1}</td>
+                  <td>{conteudo2}</td>
+                </tr>
+                <tr>
+                  <td>{conteudo3}</td>
+                  <td>{conteudo4}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        );
+      };
+
+      const titulo = "Minha tabela de cana";
+
+      const valoresCabecalhos = ["Nome", "Marca"];
+
+      const conteudo = [
+        "Havana",
+        "Engenho Anísio Santiago",
+        "Boa do Brejo",
+        "Engenho São Pedro",
+      ];
+
+      ReactDOM.render(
+        <TabelaBebidas
+          titulo={titulo}
+          cabecalhos={valoresCabecalhos}
+          conteudo={conteudo}
+        />,
+        document.getElementById("app")
+      );
     </script>
-</body>
+  </body>
 </html>
